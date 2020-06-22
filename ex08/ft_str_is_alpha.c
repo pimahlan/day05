@@ -1,48 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcapitalize.c                                 :+:      :+:    :+:   */
+/*   ft_str_is_alpha.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pimahlan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/06/22 10:57:05 by pimahlan          #+#    #+#             */
-/*   Updated: 2020/06/22 14:14:14 by pimahlan         ###   ########.fr       */
+/*   Created: 2020/06/22 14:15:15 by pimahlan          #+#    #+#             */
+/*   Updated: 2020/06/22 14:35:39 by pimahlan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
-#include <string.h>
 
-char *ft_strcapitalize(char *str)
+int		ft_str_is_alpha(char *str)
 {
-	int i;
-	int flag;
-
+	int		i;
 	i = 0;
-	flag = 1;
 	while (str[i] != '\0')
 	{
-		if ((str[i] <= '9' && str[i] >= '0') ||
-				(str[i] >= 'a' && str[i] <= 'z') ||
-				(str[i] >= 'A' && str[i] <= 'Z'))
-		{
-			if (flag && (str[i] >= 'a' && str[i] <= 'z'))
-				str[i] -= ('a' - 'A');
-			if (!flag && (str[i] >= 'A' && str[i] <= 'Z'))
-				str[i] += ('a' - 'A');
-			flag = 0;
-		}
-		else
-			flag = 1;
+		if (!((str[i] >= 'A' && str[i] <= 'Z') || (str[i]>= 'a' && str[i] <= 'z')))
+			return (0);
 		i++;
 	}
-	return (str);
+	return (1);
 }
 /*
 int		main(void)
 {
-	char test[]= "we thik code";
-	printf("%s \n", test);
-	printf("%s \n", ft_strcapitalize(test));
+	printf("%d", ft_str_is_alpha("hel-lo"));
 	return (0);
 }*/
